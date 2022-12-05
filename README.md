@@ -1,24 +1,18 @@
-# README
+# JobKanban App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a fullstack application made for current job seekers. It allows for tracking of all your job applications and their progress using **Kanban** style methodology. The drag and drop feature makes tracking easy and your progress visibly comprehensible. No more jumbled excel docs!
 
-Things you may want to cover:
+## Requirements
+    * node version 16
+    * npm version 8.5
+    * ruby 2.7
+    * postgresql 9.3
 
-* Ruby version
+## How to Use
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Fork and clone
+2. Run npm install --prefix client (or yarn)
+3. Bundle install
+4. Run rails db:migrate db:seed
+5. Run npm start --prefix client
+6. Run rails s
