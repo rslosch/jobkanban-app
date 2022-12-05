@@ -10,7 +10,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="text-red-800 bg-red-200">
       <h1>Page Count: {count}</h1>
     </div>
   );
