@@ -81,6 +81,9 @@ test:
 #
 production:
   <<: *default
-  database: jobkanban_production
-  username: jobkanban
-  password: <%= ENV["JOBKANBAN_DATABASE_PASSWORD"] %>
+  # KEEP COMMENTED OUT FOR NOW
+  
+  # database: jobkanban_production
+  # username: jobkanban
+  # password: <%= ENV["JOBKANBAN_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
