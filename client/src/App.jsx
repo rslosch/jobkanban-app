@@ -1,17 +1,12 @@
 import { useState, useEffect } from "react";
+import Board from "./Board.jsx"
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
-  }, []);
+// Logic goes here
 
   return (
-    <div className="text-red-800 bg-red-200">
-      <h1>Page Count: {count}</h1>
+    <div>    
+      <Board />
     </div>
   );
 }
