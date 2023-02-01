@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <GlobalProvider> 
-        <div className="overflow-auto bg-slate-50 h-screen w-screen">
+        <div className="overflow-auto bg-grey-1 h-screen w-screen">
           <Board />
         </div>
       </GlobalProvider>  

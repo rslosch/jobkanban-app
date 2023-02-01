@@ -2,10 +2,12 @@ import React, { useState, useRef, useContext } from 'react'
 import { GlobalContext } from './context/globalState'
 import ApplicationCard from './ApplicationCard'
 import EditListForm from './EditListForm'
-import { WishlistIcon, AppliedIcon, InterviewIcon, EllipsesHorizontalIcon, OfferIcon, RejectedIcon } from './icons'
+import ApplicationForm from './ApplicationForm'
+import { WishlistIcon, AppliedIcon, InterviewIcon, EllipsesHorizontalIcon, OfferIcon, RejectedIcon, AddIcon } from './icons'
 
 function ListItem({ list, handleClick, active }) {
 
+    const [appFlag, setAppFlag] = useState(false)
     const [name, setName] = useState(list.name)
 
     const { updateList, deleteList } = useContext(GlobalContext)
@@ -17,7 +19,7 @@ function ListItem({ list, handleClick, active }) {
         handleClick(null)
     }
 
-    function handleChange(e){
+    function handleNameChange(e){
         setName(e.target.value)
     }
 
@@ -26,7 +28,7 @@ function ListItem({ list, handleClick, active }) {
         updateList(name, list.id)
     }
 
-    function handleDelete(){
+    function handleListDelete(){
         deleteList(list.id)
     }
 
@@ -56,40 +58,41 @@ function ListItem({ list, handleClick, active }) {
     return (
         <>
             <div className="flex flex-shrink-0 flex-grow-0 p-6 relative"> 
-                <div className=''>
+                <div className='text-grey-5'>
                     {chooseDisplayIcon(list.name)}
                 </div>
                 <div className="flex flex-col flex-nowrap">
-                    <div className='rounded-lg text-lg text-center w-52'> 
+                    <div className={`rounded-lg text-lg text-center w-52`}> 
                         <form onSubmit={handleSubmit}>
                             <input  
                                 ref={inputNameRef}
                                 type="text" 
-                                value={name}
-                                onChange={e => handleChange(e)}
+                                value={name.toUpperCase()}
+                                onChange={e => handleNameChange(e)}
                                 onBlur={handleSubmit}
-                                className="text-center bg-slate-50  hover:bg-slate-300"
+                                className="text-grey-5 text-center bg-grey-1 rounded-lg"
                             />
                             <input className='hidden' type="submit" />
                         </form>
                     </div>
-                    <div className='text-sm text-center'>{`${list.applications.length} ${list.applications.length === 1 ? 'JOB': 'JOBS' }`}</div>
-                { active && 
+                    <div className='text-grey-3 text-sm text-center font-thin'>{`${list.applications.length} ${list.applications.length === 1 ? 'JOB': 'JOBS' }`}</div>
+                    { active && 
                     <EditListForm 
                         handleNameClick={handleNameClick}
-                        handleDelete={handleDelete}
+                        handleDelete={handleListDelete}
                     /> 
-                }
+                    }
                 </div>
                 <div className=''>
-                    <button onClick={() => handleClick(list.id)}>
+                    <button className="text-grey-5" onClick={() => handleClick(list.id)}>
                         <EllipsesHorizontalIcon />
                     </button>
                 </div>
-    
             </div>
-            <button className='bg-white w-64 h-8 rounded-sm shadow-lg ring ring-slate-300'> Add Application</button>
-    
+            <button onClick={() => setAppFlag(true)} className='flex justify-center items-center bg-white w-64 h-10 rounded-sm ring-1 text-grey-3 ring-grey-2 hover:ring-primary-2 hover:text-primary-2 hover:shadow-xl'> 
+                <AddIcon />
+            </button>
+            { appFlag && <ApplicationForm id={list.id} name={list.name} setAppFlag={setAppFlag} />}
             <div className="flex flex-col items-center justify-start mt-2 p-2 h-full w-full overflow-scroll">
                 {apps}
             </div>

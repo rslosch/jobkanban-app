@@ -31,7 +31,7 @@ function Lists() {
     const addList =
         <div className={`${styles.divClass} ${addFormFlag ? "blur-md" : ""}`}>
             <div className="flex flex-shrink-0 flex-grow-0 p-6"> 
-                <div className='text-lg text-center rounded-lg p-4 hover:bg-slate-300'> 
+                <div className='text-lg text-center rounded-lg p-4 hover:bg-grey-2'> 
                     <button onClick={() => setAddFormFlag(true)} className="flex justify-center gap-4 w-64 h-8 shadow-l"> 
                         <AddIcon />
                         <h1> Add List </h1>

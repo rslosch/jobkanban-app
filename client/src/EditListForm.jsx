@@ -5,7 +5,6 @@ import { TrashIcon } from './icons'
 
 function EditListForm({handleNameClick, handleDelete}) {
 
-
     return (
         <div className='container'>
             <div className='absolute shadow-xl rounded-lg top-20 bg-white w-56 h-34 border-sm py-2'>
