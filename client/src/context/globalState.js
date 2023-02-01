@@ -15,16 +15,14 @@ function GlobalProvider({children}){
 
         getLists()
 
-        fetch('/applications')
-        .then(res => res.json())
-        .then(data => {
-            setApplications(data)
-            setIsLoading(false)
-        })
+        // fetch('/applications')
+        // .then(res => res.json())
+        // .then(data => {
+        //     setApplications(data)
+        //     setIsLoading(false)
+        // })
+        setIsLoading(false)
     }, [])
-
-    // console.log("lists", lists)
-    // console.log("applications", applications)
 
     const getLists = () => {
         setIsLoading(true)
@@ -80,8 +78,35 @@ function GlobalProvider({children}){
         })
     }
 
+    const addApplication = (form, id) => {
+        fetch(`/lists/${id}/applications`, {
+            method: 'POST',
+            headers: { 'Content-Type' : 'application/json' },
+            body: JSON.stringify({
+                company: form.company,
+                job_title: form.job_title,
+                description: form.description,
+                list_id: form.list_id,
+                bg_color: form.bg_color,
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            const newLists = lists.map(list => {
+                if (list.id === data.list_id) {
+                  return {
+                    ...list,
+                    applications: [...list.applications, data]
+                  };
+                }
+                return list;
+            })
+            setLists(newLists)
+        })
+    }
+
     return (
-        <GlobalContext.Provider value = {{applications, lists, addList, isLoading, updateList, deleteList}} >
+        <GlobalContext.Provider value = {{applications, lists, addList, isLoading, updateList, deleteList, addApplication}} >
             {children}
         </GlobalContext.Provider>
     )
