@@ -105,8 +105,27 @@ function GlobalProvider({children}){
         })
     }
 
+    const deleteApplication = (listId,id) => {
+            fetch(`/lists/${listId}/applications/${id}`, {
+                method: 'DELETE',
+                headers: { 'Content-Type' : 'application/json' }
+            })
+            .then(() => {
+                const newLists = lists.map(list => {
+                    if (list.id === listId) {
+                      return {
+                        ...list,
+                        applications: list.applications.filter(app => app.id !== id)
+                      };
+                    }
+                    return list;
+                })
+                setLists(newLists)
+            })            
+    }
+
     return (
-        <GlobalContext.Provider value = {{applications, lists, addList, isLoading, updateList, deleteList, addApplication}} >
+        <GlobalContext.Provider value = {{applications, lists, addList, isLoading, updateList, deleteList, addApplication, deleteApplication}} >
             {children}
         </GlobalContext.Provider>
     )

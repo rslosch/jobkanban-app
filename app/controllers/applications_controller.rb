@@ -16,6 +16,11 @@ class ApplicationsController < ApplicationController
         end
     end
 
+    def destroy
+        application = @list.applications.find(params[:id])
+        application.destroy
+    end
+
     private
 
     def get_list

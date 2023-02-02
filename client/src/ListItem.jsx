@@ -51,7 +51,7 @@ function ListItem({ list, handleClick, active }) {
 
     const apps = (list.applications.map(app => {
         return(
-            <ApplicationCard key={app.id} id={app.id} company={app.company} jobTitle={app.job_title} color={app.bg_color}/>
+            <ApplicationCard key={app.id} listId={list.id} id={app.id} company={app.company} jobTitle={app.job_title} color={app.bg_color}/>
         )
     }))
 

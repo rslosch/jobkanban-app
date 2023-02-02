@@ -23,6 +23,7 @@ function ApplicationForm({id, name, setAppFlag}) {
     function handleSubmit(e){
         e.preventDefault()
         addApplication(form, id)
+        setAppFlag(false)
     }
 
   return (
