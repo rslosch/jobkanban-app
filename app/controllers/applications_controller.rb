@@ -3,7 +3,7 @@ class ApplicationsController < ApplicationController
     before_action :get_list
 
     def index
-        applications = Application.all.uniq
+        applications = @list.applications
         render json: applications
     end
 
