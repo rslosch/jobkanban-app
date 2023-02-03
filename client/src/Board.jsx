@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Lists from './Lists'
+import Lists from './pages/Lists/Lists'
 import { GlobalContext } from './context/globalState';
 
 import { RotatingLines } from 'react-loader-spinner'
@@ -23,7 +23,7 @@ const Board = () => {
   }
   else {
     return (
-      <div className="flex p-2">
+      <div className="p-2">
         <Lists /> 
       </div>
     )

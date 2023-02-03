@@ -125,7 +125,7 @@ function GlobalProvider({children}){
     }
 
     return (
-        <GlobalContext.Provider value = {{applications, lists, addList, isLoading, updateList, deleteList, addApplication, deleteApplication}} >
+        <GlobalContext.Provider value = {{applications, lists, setLists, addList, isLoading, updateList, deleteList, addApplication, deleteApplication}} >
             {children}
         </GlobalContext.Provider>
     )
