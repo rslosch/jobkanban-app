@@ -3,10 +3,8 @@ import React, { useState, useEffect } from 'react'
 const GlobalContext = React.createContext()
 
 function GlobalProvider({children}){
-    // const [loggedIn, setLoggedIn] = useState(false)
 
     const [lists, setLists] = useState([])
-    const [applications, setApplications] = useState([])
     const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
@@ -42,7 +40,6 @@ function GlobalProvider({children}){
             getLists()
             setIsLoading(false)
         })
-        
     }
 
     const updateList = (form, id) => {
@@ -117,7 +114,7 @@ function GlobalProvider({children}){
     }
 
     return (
-        <GlobalContext.Provider value = {{applications, lists, setLists, addList, isLoading, setIsLoading,updateList, deleteList, addApplication, deleteApplication}} >
+        <GlobalContext.Provider value = {{lists, setLists, addList, isLoading, setIsLoading,updateList, deleteList, addApplication, deleteApplication}} >
             {children}
         </GlobalContext.Provider>
     )
