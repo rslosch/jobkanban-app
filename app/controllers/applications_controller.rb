@@ -16,6 +16,16 @@ class ApplicationsController < ApplicationController
         end
     end
 
+    def update
+        application = @list.applications.find(params[:id])
+        if application
+            application.update(application_params)
+            render json: application
+        else
+            render json: { errors: "Not Found"}, status: :unauthorized
+        end
+    end
+
     def destroy
         application = @list.applications.find(params[:id])
         application.destroy
@@ -28,7 +38,7 @@ class ApplicationsController < ApplicationController
     end
 
     def application_params
-        params.permit(:description, :company, :job_title, :bg_color, :list_id)
+        params.permit(:description, :company, :job_title, :bg_color, :list_id, :position, :application, :id)
     end
 
 end
