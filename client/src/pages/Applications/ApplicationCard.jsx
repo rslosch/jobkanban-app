@@ -46,10 +46,7 @@ function ApplicationCard({listId, id, jobTitle, company, color, type, position})
         {...listeners}
         style={style}
         className='flex flex-shrink-0 justify-between rounded-md h-24 w-72 border-grey-2 border my-1 mx-2 p-3'
-        onMouseEnter={() => {
-            console.log("position", position)
-            setIsShown(true)
-        }}
+        onMouseEnter={() => setIsShown(true)}
         onMouseLeave={() => setIsShown(false)}
     >
         <div className='flex items-stretch flex-nowrap gap-2'>

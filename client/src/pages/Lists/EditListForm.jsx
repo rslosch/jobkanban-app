@@ -12,11 +12,7 @@ function EditListForm({handleNameClick, handleDelete}) {
                     <h1 > Edit List Form</h1>
                     <PencilIcon />
                 </div>
-                <div className='flex justify-between text-gray-800 py-2 px-4 hover:bg-indigo-500 hover:text-white'>
-                    <h1> Move List </h1>
-                    <MoveIcon />
-                </div>
-                <div onClick={handleDelete}className='flex justify-between text-gray-800 py-2 px-4 hover:bg-indigo-500 hover:text-white'>
+                <div onClick={handleDelete} className='flex justify-between text-gray-800 py-2 px-4 hover:bg-indigo-500 hover:text-white'>
                     <h1> Delete List </h1>
                     <TrashIcon />
                 </div>

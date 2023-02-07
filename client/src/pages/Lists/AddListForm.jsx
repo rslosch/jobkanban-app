@@ -9,7 +9,6 @@ function AddListForm({addFormFlag}) {
 
     function handleSubmit(e){
         e.preventDefault()
-        console.log("Submitted", name)
         addList(name)
         addFormFlag(false)
     }

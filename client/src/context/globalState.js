@@ -15,12 +15,6 @@ function GlobalProvider({children}){
 
         getLists()
 
-        // fetch('/applications')
-        // .then(res => res.json())
-        // .then(data => {
-        //     setApplications(data)
-        //     setIsLoading(false)
-        // })
         setIsLoading(false)
     }, [])
 
@@ -30,9 +24,7 @@ function GlobalProvider({children}){
         .then(res => res.json())
         .then(data => {
             setLists(data)
-            setIsLoading(false)
         })
-        
     }
 
     const addList = (form) => {
@@ -125,7 +117,7 @@ function GlobalProvider({children}){
     }
 
     return (
-        <GlobalContext.Provider value = {{applications, lists, setLists, addList, isLoading, updateList, deleteList, addApplication, deleteApplication}} >
+        <GlobalContext.Provider value = {{applications, lists, setLists, addList, isLoading, setIsLoading,updateList, deleteList, addApplication, deleteApplication}} >
             {children}
         </GlobalContext.Provider>
     )
